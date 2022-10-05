@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "rnwebview",
+    "slug": "rnwebview",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "rnwebview"
+}
