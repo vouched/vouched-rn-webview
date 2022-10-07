@@ -1,13 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 export default function App() {
+  const appUrl = 'https://static.vouched.id/widget/demo/#/'
+  const requestCameraPermission = async () => {
+    try { 
+		  const granted = await PermissionsAndroid.requestMultiple([
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+  	  ]);
+  	} catch (err) {
+      console.warn(err);
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <WebView
+      source={{ uri: appUrl }}
+      style={{ marginTop: 20 }}
+      geolocationEnabled={true}
+      mediaPlaybackRequiresUserAction={false}
+      javaScriptEnabled={true}
+     />
   );
 }
 
