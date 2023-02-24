@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 export default function App() {
-  const appUrl = 'https://static.vouched.id/widget/demo/#/'
+  const appUrl = 'https://static.vouched.id/widget/demo/#'
   const requestCameraPermission = async () => {
     try { 
 		  const granted = await PermissionsAndroid.requestMultiple([
@@ -17,6 +17,12 @@ export default function App() {
     }
   };
 
+  const onMessage = (m) => {
+    const messageData = JSON.parse(m);
+    alert(messageData);
+    console.log(messageData)
+  }
+
   return (
     <WebView
       source={{ uri: appUrl }}
@@ -24,8 +30,10 @@ export default function App() {
       geolocationEnabled={true}
       mediaPlaybackRequiresUserAction={false}
       javaScriptEnabled={true}
+      onMessage={m => onMessage(m.nativeEvent.data)}
      />
   );
+
 }
 
 const styles = StyleSheet.create({
