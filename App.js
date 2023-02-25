@@ -28,6 +28,7 @@ export default function App() {
       style={{ marginTop: 20 }}
       geolocationEnabled={true}
       mediaPlaybackRequiresUserAction={false}
+      allowsInlineMediaPlayback
       javaScriptEnabled={true}
       onMessage={m => onMessage(m.nativeEvent.data)}
      />
