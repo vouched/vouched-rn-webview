@@ -37,19 +37,12 @@ Make sure your device is connected via USB to the development computer. You will
 The demo example shows a way to pass string data to the WebView by using the onMessage handler to accept data from the plugin. As an example, here's a snippet of how we would pass data from the plugin, modifying the onDone handler found in the plugin [quick start](https://docs.vouched.id/docs/js-plugin#quick-start-code):
 
 ```
-  // onDone handler
   // onDone is called when the verification is completed.
   onDone: (job) => {
     // stringify the job response so we can post it
     const jobData = JSON.stringify(job);
     // use the postMessage function in the Webview to allow data to be sent. 
     window.ReactNativeWebView.postMessage(JSON.stringify(job));
-    // Redirect to the next page based on the job success
-    if( job.result.success){
-      window.location.replace("https://website.com/success/");
-    }else{
-      window.location.replace("https://website.com/failed/");
-    }
   },
 ```
 
