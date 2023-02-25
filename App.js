@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 export default function App() {
-  const appUrl = 'https://static.vouched.id/widget/demo/#'
+  const appUrl = 'https://static.vouched.id/widget/demo/index.html#';
   const requestCameraPermission = async () => {
     try { 
 		  const granted = await PermissionsAndroid.requestMultiple([
@@ -19,7 +19,6 @@ export default function App() {
 
   const onMessage = (m) => {
     const messageData = JSON.parse(m);
-    alert(messageData);
     console.log(messageData)
   }
 
