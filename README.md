@@ -32,5 +32,18 @@ Make sure your device is connected via USB to the development computer, and can 
 
 Make sure your device is connected via USB to the development computer. You will need to add the npm package *ios-deploy*, by running `npm install -g ios-deploy`.  Once installed, you can run the application by specifying the device name, ie `react-native run-ios --device "Jay's iPhone"` or by the device id, ie `react-native run-ios --udid 2412e2c450a14e23451699`. You will eventually be presented with a web page that allows you to configure and run the plugin
 
+#### Communicating between the plugin and react native
 
+The demo example shows a way to pass string data to the WebView by using the onMessage handler to accept data from the plugin. As an example, here's a snippet of how we would pass data from the plugin, modifying the onDone handler found in the plugin [quick start](https://docs.vouched.id/docs/js-plugin#quick-start-code):
 
+```
+  // onDone is called when the verification is completed.
+  onDone: (job) => {
+    // stringify the job response so we can post it
+    const jobData = JSON.stringify(job);
+    // use the postMessage function in the Webview to allow data to be sent. 
+    window.ReactNativeWebView.postMessage(JSON.stringify(job));
+  },
+```
+
+Take a look at the [react-native-webview guide](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Guide.md) for more insight into other strategies to pass data and options between javascript and React Native components
