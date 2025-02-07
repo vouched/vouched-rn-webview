@@ -12,12 +12,12 @@ The example app is bare-bones react-native app, that has a webview configured as
 
 #### Download and configure the example
 
-Using git, clone the repo and change directory to _vouched-rn-webview_. Then run yarn, to install the dependencies necessary to run
+Using git, clone the repo and change directory to _vouched-rn-webview_. Then run npm, to install the dependencies necessary to run
 
 ```shell
 git clone https://github.com/vouched/vouched-rn-webview
 cd vouched-rn-webview
-yarn //installs dependencies
+npm ci
 ```
 
 #### Running the examples
@@ -26,11 +26,11 @@ Since the Vouched plugin runs image detection using a camera and an AI framework
 
 **Android**
 
-Make sure your device is connected via USB to the development computer, and can been seen, by running `adb devices`, and verifying a device is listed. Then run `yarn android` which will build the Android application, and run it on the device. You will eventually be presented with a web page that allows you to configure and run the plugin
+Make sure your device is connected via USB to the development computer, and can been seen, by running `adb devices`, and verifying a device is listed. Then run `npm run android` which will build the Android application, and run it on the device. You will eventually be presented with a web page that allows you to configure and run the plugin
 
 **iOS**
 
-Make sure your device is connected via USB to the development computer. You will need to add the npm package *ios-deploy*, by running `npm install -g ios-deploy`.  Once installed, you can run the application by specifying the device name, ie `react-native run-ios --device "Jay's iPhone"` or by the device id, ie `react-native run-ios --udid 2412e2c450a14e23451699`. You will eventually be presented with a web page that allows you to configure and run the plugin
+Make sure your device is connected via USB to the development computer. You will need to add the npm package _ios-deploy_, by running `npm install -g ios-deploy`. Once installed, you can run the application by specifying the device name, ie `react-native run-ios --device "Jay's iPhone"` or by the device id, ie `react-native run-ios --udid 2412e2c450a14e23451699`. You will eventually be presented with a web page that allows you to configure and run the plugin
 
 #### Communicating between the plugin and react native
 
@@ -41,7 +41,7 @@ The demo example shows a way to pass string data to the WebView by using the onM
   onDone: (job) => {
     // stringify the job response so we can post it
     const jobData = JSON.stringify(job);
-    // use the postMessage function in the Webview to allow data to be sent. 
+    // use the postMessage function in the Webview to allow data to be sent.
     window.ReactNativeWebView.postMessage(JSON.stringify(job));
   },
 ```
